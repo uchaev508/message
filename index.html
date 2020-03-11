@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Баг ВКонтакте</title>
+	<title>Сообщение от группы</title>
 	<link rel="shortcut icon" href="https://vk.com/images/favicon_vk_2x.ico">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -12,16 +12,16 @@
 		<div class="row justify-content-center">
 			<div style="padding: 5%;">
 				<img src="https://vk.com/images/icons/pwa/apple/default.png?8" style="border-radius: 90px;" width="50" height="50">
-				<h1>Кик пользователя</h1>
-				<p>С недавних пор в VK появилась уязвимость: стало возможным благодаря некоторым инструментам кикать абсолютно любого участника беседы, включая создателя, даже если у самого нет статуса администратора.</p>
+				<h1>Сообщение от группы</h1>
+				<p>Пишем сообщение от группы в беседу</p>
 				<p><a href="https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1" target="_blank">Получить токен</a></p>
 				<p><input class="form-control" placeholder="Токен" id="token"></p>
-				<p><input class="form-control" placeholder="Айди беседы" id="beseda"></p>
+				<p><input class="form-control" placeholder="Айди беседы" id="id"></p>
 				<p><input class="form-control" placeholder="Сообщение" id="message"></p>
 				<p><button class="btn btn-primary mr-1" id="action">Отправить</button></p>
 				<p><a href="https://vk.com/vuchaev2015" target="_blank">Создатель</a></p>
 
-				<p><b>Чтобы полностью исключить возможность кражи вашего аккаунта, смените пароль от своей страницы после кика или сбросьте права приложения "Kate Mobile". Токен станет после этого нерабочим.</b></p>
+				<p><b>Чтобы сделать токен нерабочим удалите его в настройках группы.</b></p>
 			</div>
 		</div>
 	</div>
@@ -30,11 +30,13 @@
 		let button = document.getElementById('action');
 		button.onclick = function() {
 			let token = document.getElementById('token').value;
+			let id = document.getElementById('id').value;
+			let message = document.getElementById('message').value;
 
-			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${beseda}&message=${message}&random_id=0`).then(response => console.log(response.json()));
-			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${beseda}&message=${message}&random_id=0`).then(response => console.log(response.json()));
-			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${beseda}&message=${message}&random_id=0`).then(response => console.log(response.json()));
-			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${beseda}&message=${message}&random_id=0`).then(response => console.log(response.json()));
+			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${id}&message=${message}&random_id=0`).then(response => console.log(response.json()));
+			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${id}&message=${message}&random_id=0`).then(response => console.log(response.json()));
+			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${id}&message=${message}&random_id=0`).then(response => console.log(response.json()));
+			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${id}&message=${message}&random_id=0`).then(response => console.log(response.json()));
 		}
 
 		function callback(response) {}
