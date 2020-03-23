@@ -35,8 +35,16 @@
 			let message = document.getElementById('message').value;
 
 			fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/messages.send?v=5.103&access_token=${token}&chat_id=${id}&message=${message}&random_id=0`).then(response => console.log(response.json()));
+
+
+			setTimeout(function(){
+				let el = document.createElement('div');
+				el.className = 'alert alert-danger';
+				el.innerHTML = 'Выполнено'
+				document.getElementById('success').append(el);
+			}, 750);
 		}
-		
+
 		function callback(response) {}
 		
 	</script>
